@@ -19,7 +19,15 @@ export default class LoginPage{
     buttonRegistreSe ='.movies-page-link[href="/register"]';
     msgFalha = 'Usuário ou senha inválidos.';
     buttonProfile = '.movies-page-link[href="/profile"]';
-    
+// outros elementos de Perfil
+    abaAvaliacoes = '.ratings h2';
+    nomePerfil = '.user-info > :nth-child(1)';
+    emailPerfil = '.user-info > :nth-child(2)';//o mesmo, tem que diferencialos na chamada.
+    ftPerfil = '.profile-nickname' ;
+    gerenciarConta = '.account-link[href="/account"]';
+    sair = '.account-link[href="/logout"]';
+
+    /////////////////funções////////////////////
     typeEmail (email){
         cy.get(this.inputEmail).type(email);
     }
@@ -35,8 +43,26 @@ export default class LoginPage{
     clickButtonPerfil(){
         cy.get(this.buttonProfile).click();
     }
-
-    
+    /// da aba de perfil ///
+    verAvaliações(){
+        cy.get(this.abaAvaliacoes);
+    }
+    verNome(){
+        cy.get(this.nomePerfil);
+    }
+    verEmail(){
+        cy.get(this.emailPerfil);
+    }
+    verFoto(){
+        cy.get(this.ftPerfil);
+    }
+    clickButtonGerenciarConta(){
+        cy.get(this.gerenciarConta).click();
+    }
+    clickButtonSair(){
+        cy.get(this.sair).click();
+    }
+    ///////////////////Mocador//////////////////////
     usuarioMocante(){
         return cy
         .request({
@@ -58,24 +84,26 @@ export default class LoginPage{
             // cy.wrap(email).as('emailCamufla');
          }).as('tokenCamufla') 
     }
+    logarMocante(){
+        paginaLogin.typeEmail('jotaro@co.co');
+        paginaLogin.typeSenha('123456');
+        paginaLogin.clickButtonLogin();
+    }
     requestLogin (){
         return cy.request({
             method:'POST',
             url:'https://raromdb-3c39614e42d4.herokuapp.com/api/auth/login', 
             body: {
-                email: faker.string.alpha({length: 10}) + '@co.co',
-                password: '123456',
+                "email":  'jotaro@co.co',
+                "password": '123456',
             },
-            headers: {
-                Authorization: 'Bearer ' + token
-            }
-        }).then(function (response) {
+        }).then((response)=> {
               cy.log(response)
               expect(response.status).to.equal(200);
               expect(response.body).to.have.property('accessToken');
-              //accessToken = response.body.accessToken;
+              token = response.body.accessToken;
               cy.log(token);
-              //token= accessToken;
+              
             })
     }
     promoveAdm() {

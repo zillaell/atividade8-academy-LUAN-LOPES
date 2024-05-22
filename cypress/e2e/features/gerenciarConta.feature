@@ -3,18 +3,27 @@
 Funcionalidade: Gerenciar Conta
 
 Contexto: o usuário deve estar autenticado no sitema
-    Dado que acessei a funcionalidade de Gerenciar Conta
-
+    Dado que sou usuário cadastrado e autenticado
+    E acessei a funcionalidade de Gerenciar Conta
 
 #1
-Cenário: Deve ser possível acessar a edição de informações estando autenticado 
-    Quando 
-#2
-Cenário: Deve ser possível alterar as informações do próprio usuário autenticado 
-#3
-Cenário: Deve ser possível atualizar apenas seu nome e senha através do gerenciamento de conta
-#4
 Cenário: Deve ser visível para o usuário todos os seus dados relevantes (email, nome, tipo de usuário, senha)
+    Quando eu acessar 
+    Então devo encontrar o campo de nome
+    E devo encontrar o campo de email
+#2
+@afetaUsuário
+Cenário: Deve ser possível alterar o nome com sucesso. 
+    Quando tentar editar o nome
+    E confirmar operação
+    Então devo ser capaz de alterar o nome com sucesso
+#3
+@afetaUsuário
+Cenário: Deve ser possível alterar a senha com sucesso.
+#4
+@afetaUsuário
+Cenário: Deve ser possível alterar nome e senha com sucesso.
+####BAD REQUEST
 #5
 Cenário: Não deve ser possível acessar a edição de informações não estando autenticado 
 #6

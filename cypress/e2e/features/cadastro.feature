@@ -18,7 +18,6 @@ Cenário: Um usuário sempre deve ser criado com o tipo 0, que é o tipo de usu�
   Quando cadastro um novo usuário
   Então ele deve ser criado com o tipo 0, usuário comum.
 
-##################BAD REQUESTS###########################################################################
 #3
 Esquema do Cenário: Deve ser possivel Cadastrar um usuário com um nome em qualquer formato (alfabeto.A, fonte.A, emoji, caractere.E)
   Quando informar o nome "<nome>"
@@ -33,6 +32,8 @@ Esquema do Cenário: Deve ser possivel Cadastrar um usuário com um nome em qual
   | levian@qa.com  |🤡👁️👅👁️👻    |
   | levido@qa.com  |🅒🅐🅡🅐🅜🅔🅛🅛🅞  |
   | levidum@qa.com |   #$¨!²³¹}[^   |
+
+##################BAD REQUESTS###########################################################################
 
 #4
 Cenário: Não deve ser possivel Cadastrar um usuário sem preencher o campo "nome"
@@ -57,11 +58,11 @@ Cenário: Não deve ser possivel Cadastrar um usuário sem preencher o campo "se
   Então o usuário não deverá ser cadastrado sem preencher o campo senha
 #7
 Cenário: Não deve ser possivel Cadastrar um usuário sem preencher o campo "confirmar senha"
-#   Quando informar um novo nome
-#   E informar um novo e-mail
-#   E informar uma nova senha
-#   E confirmar operação
-#   Então o usuário não deverá ser cadastrado sem preencher o campo confirmar senha
+  Quando informar um novo nome
+  E informar um novo e-mail
+  E informar uma nova senha
+  E confirmar operação
+  Então o usuário não deverá ser cadastrado sem preencher o campo confirmar senha
 #8
 Esquema do Cenário: Não deve ser possivel Cadastrar um usuário com um e-mail em formato inválido
   Quando informar o nome novo "<nome>"
@@ -79,7 +80,6 @@ Esquema do Cenário: Não deve ser possivel Cadastrar um usuário com um e-mail 
   | .@      |   Moreta  |
   |  @co    |   Ganacho |
   | @co.c   |  Goretska |
-
 
 #9
 Cenário: Não deve ser possivel Cadastrar um usuário com um e-mail já em uso
