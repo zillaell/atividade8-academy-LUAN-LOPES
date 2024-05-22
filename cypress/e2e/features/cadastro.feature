@@ -27,11 +27,12 @@ Esquema do Cenário: Deve ser possivel Cadastrar um usuário com um nome em qual
   E confirmar operação
   Então o usuário deverá ser cadastrado
   Exemplos:
-  | email          |     nome       |
-  | leveza@qa.com  |   カラメル      |
-  | levian@qa.com  |🤡👁️👅👁️👻    |
-  | levido@qa.com  |🅒🅐🅡🅐🅜🅔🅛🅛🅞  |
-  | levidum@qa.com |   #$¨!²³¹}[^   |
+  | email           |     nome       |
+  | leveza@qa.com   |   カラメル      |
+  | levian@qa.com   |🤡👁️👅👁️👻    |
+  | levido@qa.com   |🅒🅐🅡🅐🅜🅔🅛🅛🅞  |
+  | levidum@qa.com  |   #$¨!²³¹}[^   |
+  | levaizard@qa.com|  123456789     |
 
 ##################BAD REQUESTS###########################################################################
 

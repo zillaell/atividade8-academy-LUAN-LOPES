@@ -29,9 +29,10 @@ function requestLogin (){
           cy.log(response)
           expect(response.status).to.equal(200);
           expect(response.body).to.have.property('accessToken');
-          token = response.body.accessToken;
+          acessToken = response.body.accessToken;
+          token = acessToken;
           cy.log(token);
-          cy.wrap(token).as('tokenRoubado')
+          //cy.wrap(token).as('tokenRoubado')
         })
     }
 
@@ -49,6 +50,7 @@ function requestLogin (){
               },
          }).then((response)=>{
             expect(response).to.not.be.empty
+
             // expect(response.body).to.be.an('object');
             // expect(response.body).have.property('type');
             // expect(response.body.type).to.equal(0);
@@ -71,7 +73,6 @@ Given('acessei a funcionalidade de Gerenciar Conta',()=>{
 });
 When('tentar editar o nome',()=>{
     paginaCadastro.typeNome('jotaro Kujo');
-    //cy.get('[placeholder="Nome"]').type('jotaro Kujo');
 });
 When('confirmar operação',()=>{
     //paginaGerenciar.clickSalvar();
@@ -82,6 +83,24 @@ Then('devo ser capaz de alterar o nome com sucesso',()=>{
     cy.contains('Informações atualizadas!');
 });
 //2
-
-
+When('tentar editar a senha',()=>{
+    paginaGerenciar.clickAlterar();
+    paginaCadastro.typeSenha('123456');
+});
+When('confirmar senha',()=>{
+    paginaCadastro.typeSenha('123456');
+});
+Then('devo ser capaz de alterar a senha com sucesso',()=>{
+    cy.wait(1000);
+    cy.contains('Informações atualizadas!');
+});
 //3
+Then('devo ser capaz de alterar a senha e o nome com sucesso',()=>{
+    cy.wait(1000);
+    cy.contains('Informações atualizadas!');
+});
+// esquema do cenário
+When('informar o nome {string}',(nome)=>{
+    paginaCadastro.typeNome(nome);
+});
+
